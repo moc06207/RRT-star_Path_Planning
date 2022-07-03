@@ -102,7 +102,7 @@ class RRTGraph():
 
     def add_edge(self,parent,child):
         self.parent.insert(child,parent)
-        print(self.parent)
+
     def remove_edge(self,n):
         self.parent.pop(n)
 
@@ -241,6 +241,7 @@ if __name__ == '__main__':
             pygame.draw.circle(map.map, map.grey, (X[-1], Y[-1]), map.nodeRad + 2 , 0) # -1 은 last node in tree
             pygame.draw.line(map.map, map.Blue,(X[-1], Y[-1]),(X[Parent[-1]], Y[Parent[-1]]),
                              map.edgeThickness)
+
         else:
             X, Y, Parent = graph.expand()
             pygame.draw.circle(map.map, map.grey, (X[-1], Y[-1]), map.nodeRad + 2, 0)

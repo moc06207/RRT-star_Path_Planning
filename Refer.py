@@ -38,9 +38,9 @@ class RRT:
                  goal,
                  obstacle_list,
                  rand_area,
-                 expand_dis=3.0,
+                 expand_dis=2.0,
                  path_resolution=0.5,
-                 goal_sample_rate=5,
+                 goal_sample_rate=4,
                  max_iter=500,
                  play_area=None
                  ):
@@ -136,10 +136,13 @@ class RRT:
     def generate_final_course(self, goal_ind):
         path = [[self.end.x, self.end.y]]
         node = self.node_list[goal_ind]
+
         while node.parent is not None:
             path.append([node.x, node.y])
             node = node.parent
+
         path.append([node.x, node.y])
+
 
         return path
 
@@ -227,6 +230,7 @@ class RRT:
             dy_list = [oy - y for y in node.path_y]
             d_list = [dx * dx + dy * dy for (dx, dy) in zip(dx_list, dy_list)]
 
+
             if min(d_list) <= size**2:
                 return False  # collision
 
@@ -241,7 +245,7 @@ class RRT:
         return d, theta
 
 
-def main(gx=6.0, gy=10.0):
+def main(gx=10.0, gy=10.0):
     print("start " + __file__)
 
     # ====Search Path with RRT====
@@ -260,6 +264,7 @@ def main(gx=6.0, gy=10.0):
     if path is None:
         print("Cannot find path")
     else:
+        print(path)
         print("found path!!")
 
         # Draw final path

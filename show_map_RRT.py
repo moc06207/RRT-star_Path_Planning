@@ -69,7 +69,7 @@ class mapping:
         plt.plot(self.raw_pose[:, 0], self.raw_pose[:, 1], "or", markersize=3)
         plt.show()
 
-        # def RRT():
+        def RRT():
 
 
 
